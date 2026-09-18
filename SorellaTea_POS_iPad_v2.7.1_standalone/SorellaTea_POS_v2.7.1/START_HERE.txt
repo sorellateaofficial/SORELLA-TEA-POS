@@ -1,0 +1,16 @@
+SORELLA TEA POS v2.7.1 — STANDALONE iPAD BUILD
+
+This build keeps the existing Sorella POS features and uses local iPad browser storage instead of PostgreSQL/Netlify.
+
+CHANGES INCLUDED
+- Dark mode with pink typography and accents
+- Original Sorella Tea logo retained
+- Individual product/flavor images removed
+- Manage section sorting retained/improved
+- Copilot retained
+- Offline/local data storage for menu, inventory, recipes, expenses, sales and held orders
+- Backup and restore available in Settings
+- iPad-friendly touch targets and readability
+
+IMPORTANT FOR iPAD INSTALLATION
+Open index.html in a browser to use the POS. A true iOS Home Screen PWA installation requires the page to be served from an HTTPS web address; iOS does not install a local ZIP/HTML file as a signed native app. The app itself does not require Netlify or VS Code.
