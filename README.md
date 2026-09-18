@@ -1,40 +1,44 @@
-# Sorella Tea iPad Touch POS
+<div align="center">
+  <img src="./misc/readme/logo-github-sq-dark.svg#gh-dark-mode-only" />
+  <img src="./misc/readme/logo-github-sq-light.svg#gh-light-mode-only" />
+</div>
 
-A touch-first point-of-sale for Sorella Tea, built as a static HTML/CSS/JS frontend
-(preserving the original pastel pink/cream branding and layout) backed by a Netlify DB
-(Postgres via Drizzle) for real, redeploy-safe persistence.
+<br/>
+<div align="center">
+  <h3>Headless ORM for NodeJS, TypeScript and JavaScript 🚀</h3>
+  <a href="https://orm.drizzle.team">Website</a> •
+  <a href="https://orm.drizzle.team/docs/overview">Documentation</a> •
+  <a href="https://x.com/drizzleorm">Twitter</a> •
+  <a href="https://driz.link/discord">Discord</a>
+</div>
 
-## Stack
+<br/>
+<br/>
 
-- Frontend: plain HTML/CSS/JS (`index.html`, `styles.css`, `app.js`) — no build step.
-- Backend: a single Netlify Function (`netlify/functions/api.ts`) routed at `/api/*`, using
-  Drizzle ORM against Netlify DB (managed Postgres).
-- Schema: `db/schema.ts`. Migrations live in `netlify/database/migrations/` and are applied
-  automatically by Netlify on deploy.
+### What's Drizzle?
+Drizzle is a modern TypeScript ORM developers [wanna use in their next project](https://stateofdb.com/tools/drizzle). 
+It is [lightweight](https://bundlephobia.com/package/drizzle-orm) at only ~7.4kb minified+gzipped, and it's tree shakeable with exactly 0 dependencies. 
 
-## Data model
+**Drizzle supports every PostgreSQL, MySQL and SQLite database**, including serverless ones like [Turso](https://orm.drizzle.team/docs/get-started-sqlite#turso), [Neon](https://orm.drizzle.team/docs/get-started-postgresql#neon), [Xata](https://orm.drizzle.team/docs/connect-xata), [PlanetScale](https://orm.drizzle.team/docs/get-started-mysql#planetscale), [Cloudflare D1](https://orm.drizzle.team/docs/get-started-sqlite#cloudflare-d1), [FlyIO LiteFS](https://fly.io/docs/litefs/), [Vercel Postgres](https://orm.drizzle.team/docs/get-started-postgresql#vercel-postgres), [Supabase](https://orm.drizzle.team/docs/get-started-postgresql#supabase) and [AWS Data API](https://orm.drizzle.team/docs/get-started-postgresql#aws-data-api). No bells and whistles, no Rust binaries, no serverless adapters, everything just works out of the box.
 
-Categories, series, products, ingredients, recipes (BOM), expenses, orders, held orders,
-inventory movements and settings are all stored in the database — never in localStorage.
-Only the in-progress cart is cached in the browser (`localStorage`) so an accidental refresh
-mid-sale isn't lost; it is never treated as a source of truth for business data.
+**Drizzle is serverless-ready by design**. It works in every major JavaScript runtime like NodeJS, Bun, Deno, Cloudflare Workers, Supabase functions, any Edge runtime, and even in browsers.  
+With Drizzle you can be [**fast out of the box**](https://orm.drizzle.team/benchmarks) and save time and costs while never introducing any data proxies into your infrastructure. 
 
-Inventory is only ever deducted when an order is completed (via each product's recipe),
-recorded as a `Sale` movement. Manual stock changes (Stock In / Waste / Adjustment / Return /
-Correction) go through the same `inventory_movements` ledger via Manage → Stock Movement.
+While you can use Drizzle as a JavaScript library, it shines with TypeScript. It lets you [**declare SQL schemas**](https://orm.drizzle.team/docs/sql-schema-declaration) and build both [**relational**](https://orm.drizzle.team/docs/rqb) and [**SQL-like queries**](https://orm.drizzle.team/docs/select), while keeping the balance between type-safety and extensibility for toolmakers to build on top.  
 
-## Local development
+### Ecosystem
+While Drizzle ORM remains a thin typed layer on top of SQL, we made a set of tools for people to have best possible developer experience.  
+  
+Drizzle comes with a powerful [**Drizzle Kit**](https://orm.drizzle.team/kit-docs/overview) CLI companion for you to have hassle-free migrations. It can generate SQL migration files for you or apply schema changes directly to the database.  
+  
+We also have [**Drizzle Studio**](https://orm.drizzle.team/drizzle-studio/overview) for you to effortlessly browse and manipulate data in your database of choice.
 
-```
-npm install
-netlify dev
-```
+### Documentation
+Check out the full documentation on [the website](https://orm.drizzle.team/docs/overview).
 
-## Backup / restore
-
-Settings → Export Backup JSON downloads a full snapshot from `/api/backup`. Import Backup
-JSON restores it via `/api/restore`, which only inserts/updates records — it never deletes or
-truncates existing data.
-
-## v2.0.3 update
-This version is intended for a fresh/test Netlify deployment first. It includes the full-product image presentation, realistic replacement visuals, canonical category grouping, and an improved Copilot message composer. No database schema migration is required. The first state load reconciles the menu categories and hides the legacy Hot Coffee section while retaining its records.
+### Our sponsors ❤️
+<p align="center">
+<a href="https://drizzle.team" target="_blank">
+<img src='https://api.drizzle.team/v2/sponsors/svg'/>
+</a>
+</p>
